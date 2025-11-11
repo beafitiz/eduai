@@ -338,6 +338,63 @@
             font-weight: 600;
             border: 2px dashed #667eea;
         }
+
+        /* Image hover scale and click-to-enlarge modal for images inside placeholder-note */
+        .placeholder-note img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.28s ease, box-shadow 0.28s ease;
+            transform-origin: center center;
+            cursor: zoom-in;
+            border-radius: 8px;
+        }
+
+        .placeholder-note img:hover {
+            transform: scale(1.06);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+        }
+
+        /* Fullscreen modal for clicked images */
+        .image-modal {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.85);
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            z-index: 9999;
+            padding: 24px;
+        }
+
+        .image-modal.open {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .image-modal img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 12px;
+            box-shadow: 0 18px 50px rgba(0,0,0,0.6);
+        }
+
+        .image-modal .modal-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            line-height: 1;
+            cursor: pointer;
+            padding: 6px 10px;
+        }
         
         @media print {
             body {
@@ -730,5 +787,64 @@
             <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">This document highlights key features based request</p>
         </div>
     </div>
-</body>
-</html>
+
+    <!-- Image modal (click to open enlarged view) -->
+    <div id="image-modal" class="image-modal" aria-hidden="true" role="dialog">
+        <button class="modal-close" aria-label="Close image">×</button>
+        <img src="" alt="Enlarged image" />
+    </div>
+
+    <script>
+    (function(){
+        var modal = document.getElementById('image-modal');
+        if(!modal) return;
+        var modalImg = modal.querySelector('img');
+        var closeBtn = modal.querySelector('.modal-close');
+
+        function openModal(src, alt) {
+            modalImg.src = src;
+            modalImg.alt = alt || '';
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+            // small delay to avoid flash if re-opened quickly
+            setTimeout(function(){ modalImg.src = ''; }, 200);
+            document.body.style.overflow = '';
+        }
+
+        // Attach click handlers to images inside placeholder-note
+        var imgs = document.querySelectorAll('.placeholder-note img');
+        imgs.forEach(function(img){
+            // make focusable for keyboard users
+            img.tabIndex = 0;
+            img.style.outline = 'none';
+            img.addEventListener('click', function(){ openModal(img.currentSrc || img.src, img.alt); });
+            img.addEventListener('keydown', function(e){
+                if(e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openModal(img.currentSrc || img.src, img.alt);
+                }
+            });
+        });
+
+        // Close when clicking outside image or on close button
+        modal.addEventListener('click', function(e){
+            if(e.target === modal || e.target === closeBtn) closeModal();
+        });
+
+        // Close button
+        closeBtn.addEventListener('click', closeModal);
+
+        // Close on Esc
+        document.addEventListener('keydown', function(e){
+            if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+        });
+    })();
+    </script>
+ </body>
+ </html>
