@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAI Platform - Key Features Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a202c;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+        
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .notice {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 20px 30px;
+            margin: 30px 40px;
+            border-radius: 8px;
+        }
+        
+        .notice h3 {
+            color: #92400e;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .notice p {
+            color: #78350f;
+            line-height: 1.7;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .feature-section {
+            margin-bottom: 50px;
+            padding-bottom: 50px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .feature-section:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .feature-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d3748;
+        }
+        
+        .feature-description {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        
+        .screenshot {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 25px 0;
+            border: 3px solid #e2e8f0;
+        }
+        
+        .screenshot-caption {
+            text-align: center;
+            color: #718096;
+            font-style: italic;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+        
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .screenshot-item {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .screenshot-item img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .screenshot-item-caption {
+            margin-top: 12px;
+            color: #4a5568;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-item {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+        
+        .feature-item h4 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .feature-item p {
+            color: #718096;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .workflow {
+            background: linear-gradient(135deg, #e0e7ff 0%, #fce7f3 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .workflow h3 {
+            color: #5b21b6;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .workflow-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .workflow-step {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 15px;
+            font-size: 1.2rem;
+        }
+        
+        .workflow-step h4 {
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .workflow-step p {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+        
+        .highlight-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-box p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .stat-title {
+            color: #4a5568;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            color: #667eea;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .footer {
+            background: #2d3748;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .footer p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .placeholder-note {
+            background: #e0e7ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            color: #5b21b6;
+            font-weight: 600;
+            border: 2px dashed #667eea;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .feature-item:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header .subtitle {
+                font-size: 1rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .feature-title {
+                font-size: 1.5rem;
+            }
+            
+            .workflow-steps {
+                flex-direction: column;
+            }
+            
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">📚</div>
+            </div>
+            <h1>EduAI Platform</h1>
+            <p class="subtitle">Comprehensive Educational Management System</p>
+        </div>
+        
+        <div class="notice">
+            <h3>⭐ Important Note</h3>
+            <p><strong>This document showcases only a selection of key features</strong> that were specifically requested. The EduAI Platform offers many more powerful tools and capabilities beyond what is presented here. This is just the beginning of what our comprehensive educational management system can do for your institution!</p>
+        </div>
+        
+        <div class="content">
+            <!-- Dashboard Overview -->
+            <div class="feature-section">
+                <div class="feature-header">
+                    <div class="feature-icon">📊</div>
+                    <h2 class="feature-title">Intelligent Dashboard System</h2>
+                </div>
+                <p class="feature-description">
+                    Get a comprehensive overview of your educational institution with real-time analytics and health monitoring. Our dual-dashboard approach caters to both administrators and teachers with role-specific insights.
+                </p>
+                
+                
+                <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img src="./Screenshot (515).png" alt="">
+                             Admin Dashboard View
+                        </div>
+                        <p class="screenshot-item-caption">Real-time system health & school-wide analytics with at-risk student detection</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img src="./Screenshot (516).png" alt="">
+                             Teacher Dashboard View
+                        </div>
+                        <p class="screenshot-item-caption">Personalized teaching overview with classes, students, and pending tasks</p>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-title">User Management</div>
+                        <div class="stat-value">Multi-Role</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-title">Learning Health</div>
+                        <div class="stat-value">Real-Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚠️</div>
+                        <div class="stat-title">At-Risk Detection</div>
+                        <div class="stat-value">Automatic</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🤖</div>
+                        <div class="stat-title">AI Integration</div>
+                        <div class="stat-value">Advanced</div>
+                    </div>
+                </div>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>📈 Admin Dashboard</h4>
+                        <p>Monitor system-wide health, track user statistics (Total Users: 4, Students: 2, Teachers: 1, Admins: 1), and identify at-risk students with comprehensive analytics including health scores, risk level distribution, and AI system performance metrics.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>👨‍🏫 Teacher Dashboard</h4>
+                        <p>Access your teaching overview with active classes, student counts, assignments created, pending reviews, lesson notes, and curriculum design tools all in one place.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🚨 Student Risk Monitoring</h4>
+                        <p>Automatically identify students who need attention (e.g., Sarah Johnson with Health Score: 45) based on low study hours, declining grades, and missed assignments. Take immediate action with built-in messaging and scheduling tools.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📱 Responsive Design</h4>
+                        <p>Access your dashboard from any device with a fully responsive interface that adapts to desktops, tablets, and mobile phones.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Assessment Management -->
+            <div class="feature-section">
+                <div class="feature-header">
+                    <div class="feature-icon">📝</div>
+                    <h2 class="feature-title">Advanced Assessment Management</h2>
+                </div>
+                <p class="feature-description">
+                    Create, manage, and deploy various types of assessments with ease. Support for assignments, quizzes, tests, and high-stakes exams with comprehensive security features.
+                </p>
+                
+                <div class="placeholder-note">
+                    <img style="width: 100%;" src="./Screenshot (518).png" alt="">
+                    Screenshot Placeholder: Assessments page showing created exams and tests
+                </div>
+                
+                <h3 style="margin-top: 40px; margin-bottom: 20px; color: #2d3748;">Assessment Creation Workflow</h3>
+                
+                <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img style="width: 100%;" src="./Screenshot (519).png" alt=""> 
+                            Step 1: Select Assessment Type
+                        </div>
+                        <p class="screenshot-item-caption">Choose from Assignment, Quiz, Test, or Exam with specific features for each type</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img style="width: 100%;" src="./Screenshot (520).png" alt="">
+                            Step 2: Basic Information
+                        </div>
+                        <p class="screenshot-item-caption">Enter title, description, select class (SS 3), subject (Mathematics), and set exam date</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img style="width: 100%;"  src="./Screenshot (521).png" alt="">
+                             Step 3: Assessment Settings
+                        </div>
+                        <p class="screenshot-item-caption">Configure time limit (120 minutes), passing score (50%), and security settings with toggles</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img style="width: 100%;"  src="./Screenshot (522).png" alt="">
+                            Step 4: Add Questions
+                        </div>
+                        <p class="screenshot-item-caption">Import from bank, upload file, or add questions manually</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img style="width: 100%;"  src="./Screenshot (523).png" alt="">
+                             Import Questions Dialog
+                        </div>
+                        <p class="screenshot-item-caption">Import from Excel, Moodle XML, or Access DB with template download option</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img style="width: 100%;"  src="./Screenshot (530).png" alt="">
+                             Question Validation
+                        </div>
+                        <p class="screenshot-item-caption">Preview imported questions with validation stats (2 Valid, 0 Invalid, 0 Warnings)</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img style="width: 100%;"  src="./Screenshot (533).png" alt="">
+                             Step 5: Access Settings
+                        </div>
+                        <p class="screenshot-item-caption">Generate access link with QR code, set expiration, and control link status</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img style="width: 100%;"  src="./Screenshot (534).png" alt="">
+                             Step 6: Review & Create
+                        </div>
+                        <p class="screenshot-item-caption">Final review showing all settings before creating the assessment</p>
+                    </div>
+                </div>
+                
+                <div class="placeholder-note">
+                    <img style="width: 100%;"  src="./Screenshot (535).png" alt="">
+                    Screenshot Placeholder: Final exam details page showing link management and overview
+                </div>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>📋 Multiple Assessment Types</h4>
+                        <p>Choose from Assignments (flexible submission), Quizzes (instant results), Tests (formal with delayed results), or Exams (high-stakes with strict security), each tailored to different evaluation needs.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>📤 Flexible Question Import</h4>
+                        <p>Import questions from Excel (.xlsx, .xls), Moodle XML, or Access Database files. Download templates to ensure proper formatting. System validates with real-time feedback (Total: 2, Valid: 2, Invalid: 0).</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🔒 Exam Security Settings</h4>
+                        <p>Enable randomized question order, randomized answer options, and one-question-at-a-time display for enhanced exam integrity and reduced cheating opportunities.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>⏱️ Time Management</h4>
+                        <p>Set time limits (e.g., 120 minutes), configure passing scores (e.g., 50%), establish link expiration dates, and enable/disable multiple attempts. System automatically submits when time expires.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🔗 Easy Access Links</h4>
+                        <p>Generate shareable links (e.g., http://localhost:5173/take-exam/SSM-295569) with QR codes for quick student access. Control link status with simple toggle switches (Active/Inactive).</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>✅ Smart Validation</h4>
+                        <p>Imported questions are automatically validated showing total, valid, invalid, and warning counts. Example questions include "What is 2 + 2?" (multiple_choice, 1 pts) and "Is the sky blue?" (true_false, 1 pts).</p>
+                    </div>
+                </div>
+                
+                <div class="workflow">
+                    <h3>📋 Complete Exam Creation Workflow</h3>
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <div class="step-number">1</div>
+                            <h4>Select Type</h4>
+                            <p>Choose assessment type from 4 options</p>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="step-number">2</div>
+                            <h4>Basic Info</h4>
+                            <p>Title, description, class & subject</p>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="step-number">3</div>
+                            <h4>Settings</h4>
+                            <p>Time, security & scoring configuration</p>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="step-number">4</div>
+                            <h4>Add Questions</h4>
+                            <p>Import file or create manually</p>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="step-number">5</div>
+                            <h4>Access Setup</h4>
+                            <p>Generate link & QR code</p>
+                        </div>
+                        <div class="workflow-step">
+                            <div class="step-number">6</div>
+                            <h4>Review & Deploy</h4>
+                            <p>Final check and go live</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Student Experience -->
+            <div class="feature-section">
+                <div class="feature-header">
+                    <div class="feature-icon">🎓</div>
+                    <h2 class="feature-title">Seamless Student Experience</h2>
+                </div>
+                <p class="feature-description">
+                    Provide students with an intuitive, distraction-free exam interface designed to minimize stress and maximize performance.
+                </p>
+                
+                <div class="placeholder-note">
+                    <img src="./Screenshot (537).png" style="width: 100%;"  alt="">
+                     Screenshot Placeholder: Student exam start page with instructions
+                </div>
+                
+                <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img src="./Screenshot (538).png" style="width: 100%;"  alt="">
+                             Exam Instructions Screen
+                        </div>
+                        <p class="screenshot-item-caption">Clear instructions with confirmation checkboxes before starting (2 Questions, 120 Minutes)</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img src="./Screenshot (540).png" style="width: 100%;" alt="">
+                             Exam Interface
+                        </div>
+                        <p class="screenshot-item-caption">Clean exam interface showing timer, question navigation, and answer options</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-grid">
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img src="./Screenshot (541).png" style="width: 100%;" alt="">
+                             Answer Review Screen
+                        </div>
+                        <p class="screenshot-item-caption">Review answers before submission (1 answered, 1 unanswered, 1 marked for review)</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="placeholder-note">
+                            <img src="./Screenshot (542).png" style="width: 100%;" alt="">
+                             Submission Warning
+                        </div>
+                        <p class="screenshot-item-caption">Warning dialog alerting about unanswered questions before final submission</p>
+                    </div>
+                </div>
+                
+                <div class="placeholder-note">
+                    <img src="./Screenshot (543).png" style="width: 100%;" alt="">
+                     Screenshot Placeholder: Access denied page showing error when exam cannot be accessed
+                </div>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <h4>📋 Clear Instructions</h4>
+                        <p>Students receive comprehensive exam instructions (8 detailed points) with three confirmation checkboxes ensuring understanding before beginning. Instructions cover navigation, time management, and auto-save features.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>⏰ Live Timer</h4>
+                        <p>Prominent countdown timer (displayed as 01:59:04 format) at the top helps students manage time effectively with color-coded warnings as time runs out.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🧭 Question Navigation</h4>
+                        <p>Visual navigation grid shows "1 of 2 answered, 1 marked for review" with color coding: gray (not answered), blue (answered), orange (marked for review). Easy click-to-navigate between questions.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🚩 Mark for Review</h4>
+                        <p>Students can flag questions using "Mark for Review" button to revisit later, making it easy to manage difficult questions strategically during the exam.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>✅ Answer Review</h4>
+                        <p>Before submission, comprehensive review page shows: "2 Total Questions, 1 (50%) Answered, 1 Marked for Review" with visual question status grid and ability to return to specific questions.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>💾 Auto-Save</h4>
+                        <p>Progress automatically saved every 30 seconds to prevent data loss. Clear notification: "Your progress is automatically saved every 30 seconds" provides peace of mind.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>⚠️ Smart Warnings</h4>
+                        <p>System warns: "You have 1 unanswered question. These will be marked as incorrect" before submission. Prevents accidental incomplete submissions and prompts review.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>🔐 Access Control</h4>
+                        <p>Robust access control shows "Access Denied - You have already completed this exam and multiple attempts are not allowed" with helpful troubleshooting steps when access is restricted.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Features Highlight -->
+            <div class="highlight-box">
+                <h3>🚀 And That's Just the Beginning!</h3>
+                <p>The features showcased in this document represent the most requested functionalities. The EduAI Platform includes many more powerful tools including:</p>
+                <br>
+                <p>✨ <strong>AI-Powered Tutoring</strong> • Gradebook Management • Curriculum Design • Lesson Planning • Class Scheduling • Content Integrity Checking • Analytics & Reporting • Parent Portals • Student Performance Tracking • Communication Tools • Resource Libraries • Integration Capabilities • Custom Reporting • Attendance Management • Grade Calculation • Assignment Workflows • Collaborative Learning Tools • Mobile Applications • Data Export Options • Multi-Language Support • And Much More!</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>EduAI Platform - Empowering Education Through Technology</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">This document highlights key features based on user requests.</p>
+        </div>
+    </div>
+</body>
+</html>
